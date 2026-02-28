@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  ingest-api:
+    image: golang:1.22
+    working_dir: /src
+    command: sh -lc "go run ./backend/cmd/ingest-api"
+    environment:
+      MICROEDR_INGEST_ADDR: ":8080"
+      MICROEDR_EVENTS_FILE: "/data/events.ndjson"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../../:/src
+      - ingest_data:/data
+
+volumes:
+  ingest_data:
+

@@ -1,0 +1,31 @@
+# Binaries and build outputs
+bin/
+dist/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Go test and coverage outputs
+*.test
+*.out
+coverage.out
+coverage.txt
+.coverprofile
+
+# Go workspace / local tooling
+go.work
+
+# Editor / OS files
+.DS_Store
+Thumbs.db
+
+# Logs and runtime artifacts
+*.log
+events.ndjson
+
+# MicroEDR local spool/runtime dirs (if created in repo)
+spool/
+tmp/
+

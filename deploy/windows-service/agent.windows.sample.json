@@ -1,0 +1,20 @@
+{
+  "tenant_id": "t-123",
+  "host_id": "h-win-001",
+  "ingest": {
+    "url": "http://127.0.0.1:8080/v1/events:batch"
+  },
+  "spool": {
+    "dir": "C:\\ProgramData\\MicroEDR\\spool",
+    "max_mb": 2048,
+    "max_segment_mb": 32,
+    "flush_interval_msec": 2000
+  },
+  "upload": {
+    "batch_max_events": 2000,
+    "batch_max_bytes": 1048576,
+    "flush_interval_sec": 2,
+    "gzip": true
+  }
+}
+
