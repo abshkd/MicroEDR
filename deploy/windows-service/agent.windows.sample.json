@@ -15,6 +15,14 @@
     "batch_max_bytes": 1048576,
     "flush_interval_sec": 2,
     "gzip": true
+  },
+  "actions": {
+    "enabled": false,
+    "allow": [
+      "kill_process",
+      "isolate_egress"
+    ],
+    "poll_interval_sec": 5,
+    "server_public_key_b64": ""
   }
 }
-

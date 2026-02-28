@@ -27,6 +27,12 @@ type Config struct {
 		FlushInterval  int  `json:"flush_interval_sec"`
 		Gzip           bool `json:"gzip"`
 	} `json:"upload"`
+	Actions struct {
+		Enabled            bool     `json:"enabled"`
+		Allow              []string `json:"allow"`
+		PollIntervalSec    int      `json:"poll_interval_sec"`
+		ServerPublicKeyB64 string   `json:"server_public_key_b64"`
+	} `json:"actions"`
 }
 
 func DefaultPath() string {
@@ -64,6 +70,7 @@ func defaultConfig() Config {
 	cfg.Upload.BatchMaxBytes = 1048576
 	cfg.Upload.FlushInterval = 2
 	cfg.Upload.Gzip = true
+	cfg.Actions.PollIntervalSec = 5
+	cfg.Actions.Allow = []string{"kill_process", "isolate_egress"}
 	return cfg
 }
-

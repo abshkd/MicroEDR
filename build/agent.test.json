@@ -1,0 +1,28 @@
+{
+  "tenant_id": "t-test",
+  "host_id": "h-win-vm-test",
+  "ingest": {
+    "url": "http://127.0.0.1:18080/v1/events:batch"
+  },
+  "spool": {
+    "dir": "D:\\microedr\\build\\spool",
+    "max_mb": 256,
+    "max_segment_mb": 4,
+    "flush_interval_msec": 500
+  },
+  "upload": {
+    "batch_max_events": 500,
+    "batch_max_bytes": 262144,
+    "flush_interval_sec": 1,
+    "gzip": true
+  },
+  "actions": {
+    "enabled": false,
+    "allow": [
+      "kill_process",
+      "isolate_egress"
+    ],
+    "poll_interval_sec": 5,
+    "server_public_key_b64": ""
+  }
+}

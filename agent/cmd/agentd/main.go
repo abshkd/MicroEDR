@@ -10,6 +10,7 @@ import (
 	"syscall"
 	"time"
 
+	"microedr/agent/internal/actions"
 	"microedr/agent/internal/collectors/windows/etw"
 	"microedr/agent/internal/config"
 	"microedr/agent/internal/spool"
@@ -61,6 +62,24 @@ func main() {
 			}
 		}
 	}()
+	if cfg.Actions.Enabled {
+		poller, err := actions.NewPoller(
+			cfg.Ingest.URL,
+			cfg.HostID,
+			cfg.Actions.ServerPublicKeyB64,
+			cfg.Actions.Allow,
+			cfg.Actions.PollIntervalSec,
+		)
+		if err != nil {
+			log.Printf("actions disabled: invalid poller config: %v", err)
+		} else {
+			go func() {
+				if err := poller.Run(ctx); err != nil {
+					log.Printf("action poller exited: %v", err)
+				}
+			}()
+		}
+	}
 
 	for {
 		select {
